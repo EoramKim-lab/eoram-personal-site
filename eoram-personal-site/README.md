@@ -12,7 +12,7 @@ HTML / CSS / JavaScript만 사용하며 별도 설치나 빌드가 필요 없습
 | `dist/assets/app.js` | 화면 전환, 검색, 분류 필터 |
 | `dist/assets/style.css` | 반응형 디자인 |
 | `dist/cv.html` | 인쇄와 PDF 저장을 위한 CV |
-| `.github/workflows/pages.yml` | GitHub Pages 자동 배포 |
+| `../.github/workflows/pages.yml` | 저장소 최상위의 GitHub Pages 자동 배포 |
 
 메뉴는 Overview / Research / Study notes / CV로 나뉩니다.
 학습 기록은 제목·요약·본문·태그로 검색할 수 있습니다.
@@ -21,7 +21,8 @@ HTML / CSS / JavaScript만 사용하며 별도 설치나 빌드가 필요 없습
 
 ## 로컬에서 보기
 
-압축을 푼 폴더에서 아래 명령을 실행하고 `http://localhost:8000`을 엽니다.
+이 설명서가 있는 `eoram-personal-site` 폴더에서 아래 명령을 실행하고 `http://localhost:8000`을 엽니다.
+저장소 최상위에서 실행할 명령은 [최상위 README](../README.md)를 참고하세요.
 
 ```bash
 python3 -m http.server 8000 --directory dist
@@ -39,26 +40,18 @@ CV 메뉴의 `Printable CV` 버튼을 누른 다음 `인쇄 / PDF로 저장`에�
 
 ## GitHub Pages에 올리기
 
-1. GitHub에 새 저장소를 만듭니다. 개인 홈페이지 주소를 쓰려면 이름을 `내아이디.github.io`로 정합니다. 일반 저장소 이름도 가능합니다.
-2. 압축을 푼 **폴더 내부의 파일들**을 저장소 최상위에 올립니다. `dist/`, `.github/`, `README.md`가 저장소 최상위에 있어야 합니다. `.github/` 폴더도 포함하세요.
-3. 저장소의 기본 브랜치를 `main`으로 사용합니다. 다른 브랜치를 쓴다면 `pages.yml`의 `branches` 값을 바꿉니다.
-4. 저장소에서 **Settings → Pages → Build and deployment → Source → GitHub Actions**를 선택합니다.
-5. **Actions → Deploy personal site to GitHub Pages → Run workflow**로 실행합니다. 이후 `main`에 변경 사항을 push하면 자동 배포됩니다.
-6. 성공하면 **Settings → Pages**에 실제 사이트 주소가 표시됩니다.
+현재 저장소는 `EoramKim-lab/eoram-personal-site`입니다.
+워크플로는 **저장소 최상위**의 `.github/workflows/pages.yml`에 있고,
+업로드 경로는 `eoram-personal-site/dist`입니다. 사이트 파일은 현재 폴더 구조 그대로 유지합니다.
 
-터미널로 처음 올리는 경우, `내아이디`와 저장소 이름을 실제 값으로 바꿉니다.
-기존 Git 저장소에서 작업하고 있다면 아래 `git init`과 `remote add`는 생략합니다.
+1. GitHub Free를 사용한다면 저장소를 공개 상태로 설정합니다. 비공개 저장소는 GitHub Pages를 지원하는 유료 요금제가 필요합니다.
+2. 저장소에서 **Settings → Pages → Build and deployment → Source → GitHub Actions**를 선택합니다.
+3. `main`에 변경 사항을 push합니다. **Actions → Deploy personal site to GitHub Pages → Run workflow**로 수동 실행할 수도 있습니다.
+4. 성공하면 **Settings → Pages**에 실제 사이트 주소가 표시됩니다.
 
-```bash
-git init
-git add .
-git commit -m "Create personal portfolio and study archive"
-git branch -M main
-git remote add origin https://github.com/내아이디/내아이디.github.io.git
-git push -u origin main
-```
-
-GitHub 로그인은 VS Code 또는 GitHub의 인증 안내에 따라 진행합니다.
+예상 주소는 <https://eoramkim-lab.github.io/eoram-personal-site/>입니다.
+이후 파일 수정 → commit → push하면 자동 배포되며, 반영에는 몇 분 걸릴 수 있습니다.
+로컬 파일을 저장한 것만으로는 인터넷 사이트가 바뀌지 않습니다.
 
 공식 안내:
 - [GitHub Pages 게시 소스 구성](https://docs.github.com/ko/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
